@@ -1,0 +1,36 @@
+{
+	"name": "simpleflow-server",
+	"version": "1.0.0",
+	"description": "Welcome to SimpleFlow, a cutting-edge software company committed to revolutionizing how businesses manage their workflows. Established in [year], we at SimpleFlow take pride in our dedication to providing innovative, user-friendly solutions that streamline processes and boost overall efficiency.",
+	"main": "index.js",
+	"scripts": {
+		"start": "node server",
+		"dev": "nodemon server",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepare": "husky install"
+	},
+	"lint-staged": {
+		"**/*.{js,jsx,ts,tsx}": [
+			"npx prettier --write",
+			"npx eslint --fix"
+		]
+	},
+	"author": "Simpleflow",
+	"license": "ISC",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"mongoose": "^7.6.3",
+		"multer": "^1.4.5-lts.1",
+		"nodemailer": "^6.9.7",
+		"path": "^0.12.7"
+	},
+	"devDependencies": {
+		"eslint": "^8.55.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^15.2.0",
+		"nodemon": "^3.0.2",
+		"prettier": "^3.1.1"
+	}
+}

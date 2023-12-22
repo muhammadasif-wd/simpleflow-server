@@ -1,0 +1,21 @@
+{
+	"extends": ["eslint:recommended"],
+	"parserOptions": {
+		"ecmaVersion": 2021,
+		"sourceType": "module"
+	},
+	"env": {
+		"node": true,
+		"es2021": true
+	},
+
+	"rules": {
+		// Additional rules for Node.js/Express development
+		"no-console": "off", // Allowing console statements for debugging
+		"no-unused-vars": ["error", { "argsIgnorePattern": "next" }], // Ignore 'next' in middleware functions
+		"global-require": "off", // Allowing dynamic module imports with 'require'
+		"prefer-destructuring": ["error", { "object": true, "array": false }], // Enforcing destructuring where applicable
+		"arrow-body-style": ["error", "as-needed"], // Enforcing concise arrow function syntax
+		"no-param-reassign": ["error", { "props": false }] // Allowing reassignment of function parameters
+	}
+}

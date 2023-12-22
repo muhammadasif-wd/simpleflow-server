@@ -1,0 +1,23 @@
+Pattern
+1. MVC
+2. MMVC
+3. Modular
+
+MVC 
+M= Model 
+V= View
+C= Controller
+
+MMVC
+M= Model 
+M= Middleware 
+V= View
+C= Controller
+
+Modular
+
+
+"cors": "^2.8.5",
+"dotenv": "^16.3.1",
+"express": "^4.18.2",
+mongodb --> mongoose

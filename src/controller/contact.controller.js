@@ -1,6 +1,7 @@
 const httpStatus = require('http-status')
 const contactService = require("../service/contact.service");
 const sendResponse = require("../shared/sendResponse");
+
 exports.createContact = async (req, res) => {
     try {
         const reqData = await contactService.createContact(req.body);
@@ -12,13 +13,14 @@ exports.createContact = async (req, res) => {
         });
     } catch (error) {
         return sendResponse(res, {
-            statusCode: 500,
+            statusCode: httpStatus.INTERNAL_SERVER_ERROR,
             success: false,
             message: "An error occurred while creating contact message.",
             error: error.message,
         });
     }
 };
+
 exports.getContact = async (req, res) => {
     try {
         const reqData = await contactService.getContact(req.body);

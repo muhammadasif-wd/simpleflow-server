@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const httpStatus = require('http-status');
+
+
 // all route import
 const contact = require('./src/routes/contact.route');
 
@@ -14,7 +17,6 @@ app.use('/api/v1', contact);
 
 
 
-const httpStatus = require('http-status');
 
 // Handle not found route
 app.use((req, res, next) => {

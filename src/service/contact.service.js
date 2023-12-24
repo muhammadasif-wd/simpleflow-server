@@ -2,9 +2,9 @@ const httpStatus = require('http-status')
 const Contact = require("../model/contact.model")
 const { default: mongoose } = require('mongoose')
 
-exports.createContact = async (data) => {
+exports.createContact = async (payload) => {
     try {
-        const result = await Contact.create(data)
+        const result = await Contact.create(payload)
         return result
     } catch (error) {
         return {

@@ -7,7 +7,7 @@ const sendResponse = require('../shared/sendResponse');
 
 router.post("/contact", async (req, res) => {
     try {
-        await contactValidationSchema.validateAsync(req.body, { abortEarly: false });
+        await contactValidationSchema.createContactValidationSchema.validateAsync(req.body, { abortEarly: false });
         await contactController.createContact(req, res);
     } catch (error) {
         return sendResponse(res, {
@@ -23,6 +23,24 @@ router.post("/contact", async (req, res) => {
 });
 
 
+router.get("/contact/:id", contactController.getSingleContact)
+router.patch("/contact/:id", async (req, res, next) => {
+    try {
+        await contactValidationSchema.updateContactValidationSchema.validateAsync(req.body, { abortEarly: false });
+        await contactController.updateContact(req, res);
+    } catch (error) {
+        return sendResponse(res, {
+            statusCode: httpStatus.BAD_REQUEST,
+            success: false,
+            message: error.details.map(detail => ({
+                field: detail.context.key,
+                message: detail.message,
+            })),
+            error: error
+        });
+    }
+})
+router.delete("/contact/:id", contactController.deleteContact)
 router.get("/contact", contactController.getContact)
 
 module.exports = router;

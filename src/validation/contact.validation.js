@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const contactValidationSchema = Joi.object({
+const createContactValidationSchema = Joi.object({
     name: Joi.string()
         .min(3)
         .max(32)
@@ -13,7 +13,7 @@ const contactValidationSchema = Joi.object({
             'any.required': 'Name is required',
         }),
     email: Joi.string()
-        .email({ tlds: { allow: false } }) // You can adjust this based on your email validation needs
+        .email({ tlds: { allow: false } })
         .required()
         .messages({
             'string.base': 'Email should be a string',
@@ -30,4 +30,31 @@ const contactValidationSchema = Joi.object({
         }),
 });
 
-module.exports = contactValidationSchema;
+const updateContactValidationSchema = Joi.object({
+    name: Joi.string()
+        .min(3)
+        .max(32)
+        .optional() // Making the name optional for update
+        .messages({
+            'string.base': 'Name should be a string',
+            'string.min': 'Minimum 3 characters are required for the name',
+            'string.max': 'Maximum 32 characters are allowed for the name',
+        }),
+    email: Joi.string()
+        .email({ tlds: { allow: false } })
+        .optional() // Making the email optional for update
+        .messages({
+            'string.base': 'Email should be a string',
+            'string.email': 'Please provide a valid email',
+        }),
+    message: Joi.string()
+        .optional() // Making the message optional for update
+        .messages({
+            'string.base': 'Message should be a string',
+        }),
+});
+
+module.exports = {
+    createContactValidationSchema,
+    updateContactValidationSchema,
+};

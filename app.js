@@ -12,6 +12,26 @@ app.use(express.static('file'));
 // call route
 app.use('/api/v1', contact);
 
+
+
+const httpStatus = require('http-status');
+
+// Handle not found route
+app.use((req, res, next) => {
+	res.status(httpStatus.NOT_FOUND).json({
+		success: false,
+		message: 'Not Found',
+		errorMessages: [
+			{
+				path: req.originalUrl,
+				message: 'API Not Found',
+			},
+		],
+	});
+	next();
+});
+
+
 // route hit
 app.get('/', (req, res, next) => {
 	res.send(

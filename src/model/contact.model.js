@@ -7,12 +7,11 @@ const contactSchema = new Schema({
         type: String,
         required: [true, 'Name is required'],
         min: [3, 'Minimum 3 characters are required'],
-        max: 32
+        max: [32, 'Maximum 32 characters are required']
     },
     email: {
         type: String,
         required: [true, 'Email is required'],
-        unique: [true, 'Email is already exists'],
         lowercase: [true, 'Give me a valid email'],
     },
     message: {

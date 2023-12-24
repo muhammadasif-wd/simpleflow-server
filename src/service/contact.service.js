@@ -8,3 +8,12 @@ exports.createContact = async (data) => {
         console.log('error:', error)
     }
 }
+
+exports.getContact = async () => {
+    try {
+        const result = await Contact.find().lean()
+        return result
+    } catch (error) {
+        console.log('error:', error)
+    }
+}

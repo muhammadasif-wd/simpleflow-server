@@ -19,3 +19,21 @@ exports.createContact = async (req, res) => {
         });
     }
 };
+exports.getContact = async (req, res) => {
+    try {
+        const reqData = await contactService.getContact(req.body);
+        return sendResponse(res, {
+            statusCode: httpStatus.OK,
+            success: true,
+            message: "Contact message retrieve successfully.",
+            data: reqData,
+        });
+    } catch (error) {
+        return sendResponse(res, {
+            statusCode: 500,
+            success: false,
+            message: "An error occurred while retrieve contact message.",
+            error: error.message,
+        });
+    }
+};

@@ -22,4 +22,7 @@ router.post("/contact", async (req, res) => {
     }
 });
 
+
+router.get("/contact", contactController.getContact)
+
 module.exports = router;

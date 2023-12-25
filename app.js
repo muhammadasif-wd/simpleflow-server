@@ -6,6 +6,7 @@ const httpStatus = require('http-status');
 
 // all route import
 const contact = require('./src/routes/contact.route');
+const events = require('./src/routes/events.route');
 
 // middleware
 app.use(express.json());
@@ -14,6 +15,8 @@ app.use(express.static('file'));
 
 // call route
 app.use('/api/v1', contact);
+
+app.use('/api/v1', events);
 
 
 

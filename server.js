@@ -2,9 +2,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const app = require('./app');
-const multer = require('multer');
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
 
 // database connection
 mongoose.connect(`${process.env.DATABASE_URI}`).then(() => {

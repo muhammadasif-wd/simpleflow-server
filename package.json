@@ -18,7 +18,7 @@
 	"author": "Simpleflow",
 	"license": "ISC",
 	"engines": {
-		"node": "14.x"
+		"node": "18"
 	},
 	"dependencies": {
 		"cors": "^2.8.5",
